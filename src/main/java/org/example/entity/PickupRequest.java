@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,5 +26,6 @@ public class PickupRequest {
     private LocalDate pickupDate;
     private String status;
     @ManyToOne
+    @JsonIgnore
     private Recycler recycler;
 }

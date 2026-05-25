@@ -22,8 +22,8 @@ public class AdminController {
         return adminService.getAllPickups();
     }
 
-    @PutMapping("/assign/{pickupId}/{recycleId}")
-    public PickupRequest assign(@PathVariable Long pickupId, @PathVariable Long recyclerId){
-        return adminService.assignRecycler(pickupId,recyclerId);
+    @PutMapping("/assign/{pickupId}/{recyclerId}")
+    public PickupRequest assign(@PathVariable Long pickupId, @PathVariable Long recyclerId) {
+        return adminService.assignRecycler(pickupId, recyclerId);
     }
 }
