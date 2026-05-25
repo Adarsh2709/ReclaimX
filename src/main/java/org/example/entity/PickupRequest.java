@@ -24,4 +24,6 @@ public class PickupRequest {
     private String pickupAddress;
     private LocalDate pickupDate;
     private String status;
+    @ManyToOne
+    private Recycler recycler;
 }
