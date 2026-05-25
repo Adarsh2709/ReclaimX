@@ -28,5 +28,13 @@ public class PickupService {
         return pickupRepository.findAll();
     }
 
+    public PickupRequest getPickupById(Long id){
+        return pickupRepository.findById(id).orElseThrow();
+    }
+
+    public String deletePickup(Long id){
+        pickupRepository.deleteById(id);
+        return "Deleted Successfully!";
+    }
 
 }
