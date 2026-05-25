@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.entity.PickupRequest;
 import org.example.entity.Recycler;
+import org.example.exception.ResourceNotFoundException;
 import org.example.repository.PickupRepository;
 import org.example.repository.RecyclerRepository;
 import org.example.repository.UserRepository;

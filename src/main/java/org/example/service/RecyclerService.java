@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.entity.PickupHistory;
 import org.example.entity.PickupRequest;
 import org.example.entity.Recycler;
+import org.example.exception.ResourceNotFoundException;
 import org.example.repository.PickupHistoryRepository;
 import org.example.repository.PickupRepository;
 import org.example.repository.RecyclerRepository;
@@ -38,7 +39,7 @@ public class RecyclerService {
         pickup.setStatus("Collected");
         PickupHistory history = new PickupHistory();
         history.setPickupId(pickupId);
-        history.setStatus("COLLECTED");
+        history.setStatus("collected");
         history.setUpdatedAt(LocalDateTime.now());
         pickuphistoryRepository.save(history);
         return pickupRepository.save(pickup);
@@ -51,6 +52,18 @@ public class RecyclerService {
         PickupHistory history = new PickupHistory();
         history.setPickupId(pickupId);
         history.setStatus("Recycled");
+        history.setUpdatedAt(LocalDateTime.now());
+        pickuphistoryRepository.save(history);
+        return pickupRepository.save(pickup);
+    }
+
+    public PickupRequest collectPickup(Long pickupId) {
+        PickupRequest pickup = pickupRepository.findById(pickupId)
+                .orElseThrow(() -> new ResourceNotFoundException("Pickup Not Found"));
+        pickup.setStatus("Collected");
+        PickupHistory history = new PickupHistory();
+        history.setPickupId(pickupId);
+        history.setStatus("Collected");
         history.setUpdatedAt(LocalDateTime.now());
         pickuphistoryRepository.save(history);
         return pickupRepository.save(pickup);
