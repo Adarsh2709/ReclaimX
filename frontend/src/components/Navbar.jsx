@@ -108,7 +108,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 w-full px-4 sm:px-6 lg:px-8 py-3 bg-transparent">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 bg-white/90 backdrop-blur-lg rounded-full border border-green-100/40 shadow-xl shadow-green-950/4">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg rounded-full border border-green-100/40 dark:border-slate-800/60 shadow-xl shadow-green-950/4 dark:shadow-slate-950/35">
         {/* Brand Logo */}
         <div className="flex items-center select-none">
           <Link href="/" className="flex items-center group">
@@ -122,10 +122,10 @@ export default function Navbar() {
         </div>
 
         {/* Middle Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-50/50 border border-slate-100 p-1 rounded-full shadow-inner shadow-slate-200/40">
+        <nav className="hidden md:flex items-center gap-1 bg-slate-50/50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800/50 p-1 rounded-full shadow-inner shadow-slate-200/40 dark:shadow-none">
           <Link
             href="/"
-            className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+            className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
           >
             Home
           </Link>
@@ -135,19 +135,19 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/dashboard"
-                    className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                    className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
                   >
                     Dashboard
                   </Link>
                   <Link
                     href="/pickup/create"
-                    className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                    className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
                   >
                     Request Pickup
                   </Link>
                   <Link
                     href="/pickup"
-                    className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                    className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
                   >
                     History
                   </Link>
@@ -156,7 +156,7 @@ export default function Navbar() {
               {user.role === 'RECYCLER' && (
                 <Link
                   href="/recycler"
-                  className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                  className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
                 >
                   Recycler Hub
                 </Link>
@@ -164,14 +164,14 @@ export default function Navbar() {
               {user.role === 'ADMIN' && (
                 <Link
                   href="/admin"
-                  className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                  className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
                 >
                   Admin Console
                 </Link>
               )}
               <Link
                 href="/analytics"
-                className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
               >
                 Eco-Impact
               </Link>
@@ -180,13 +180,13 @@ export default function Navbar() {
             <>
               <Link
                 href="/analytics"
-                className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
               >
                 Sustainability
               </Link>
               <Link
                 href="/support"
-                className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                className="text-xs font-bold px-4 py-2 hover:bg-white dark:hover:bg-slate-800/60 hover:shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary-650 dark:hover:text-primary-400 rounded-full transition-all duration-200"
               >
                 Support Hub
               </Link>
@@ -217,8 +217,8 @@ export default function Navbar() {
                   onClick={() => setShowNotifications(!showNotifications)}
                   className={`relative p-2 rounded-full transition-all duration-200 border ${
                     showNotifications 
-                      ? 'bg-slate-100 border-slate-200 text-slate-800' 
-                      : 'text-slate-500 hover:text-slate-800 bg-transparent border-transparent hover:bg-slate-100 hover:border-slate-200'
+                      ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100' 
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 bg-transparent border-transparent hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-200 dark:hover:border-slate-700'
                   }`}
                   title="System Notifications"
                 >
@@ -264,8 +264,8 @@ export default function Navbar() {
                             onClick={() => toggleRead(notif.id)}
                             className={`flex gap-3 p-3 rounded-2xl border transition-all cursor-pointer ${
                               notif.read 
-                                ? 'bg-slate-50/50 border-slate-100 hover:bg-slate-50 text-slate-500' 
-                                : 'bg-primary-500/5 border-primary-500/10 hover:bg-primary-500/10 text-slate-700'
+                                ? 'bg-slate-50/50 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/80 text-slate-500 dark:text-slate-400' 
+                                : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/10 dark:border-primary-500/20 hover:bg-primary-500/10 dark:hover:bg-primary-500/15 text-slate-700 dark:text-slate-200'
                             }`}
                           >
                             <span className="flex-shrink-0 mt-0.5">
@@ -287,19 +287,19 @@ export default function Navbar() {
               </div>
 
               {/* User Account Info */}
-              <div className="flex items-center gap-3 pl-2 border-l border-slate-200">
+              <div className="flex items-center gap-3 pl-2 border-l border-slate-200 dark:border-slate-700/85">
                 <div className="hidden md:flex flex-col text-right">
-                  <span className="text-sm font-semibold text-slate-700 font-sans">{user.name}</span>
+                  <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 font-sans">{user.name}</span>
                   <span className="text-[10px] font-bold tracking-wider text-primary-500 uppercase">{user.role}</span>
                 </div>
                 
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 text-primary-500">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-primary-500 dark:text-primary-400">
                   <User className="h-4.5 w-4.5" />
                 </div>
 
                 <button
                   onClick={logout}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 hover:bg-red-500/10 border border-slate-200 hover:border-red-500/30 text-slate-500 hover:text-red-500 transition-all duration-200"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-red-500/10 dark:hover:bg-red-500/20 border border-slate-200 dark:border-slate-700 hover:border-red-500/30 dark:hover:border-red-500/40 text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-all duration-200"
                   title="Logout"
                 >
                   <LogOut className="h-4.5 w-4.5" />
@@ -310,7 +310,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/login"
-                className="text-sm font-semibold text-slate-600 hover:text-slate-800 px-4 py-2 hover:bg-slate-100 rounded-full transition-all duration-200"
+                className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all duration-200"
               >
                 Log In
               </Link>
