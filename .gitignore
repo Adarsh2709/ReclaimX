@@ -1,0 +1,20 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+
+# Next.js build outputs
+.next/
+frontend/.next/
+
+# Java/Gradle build outputs
+.gradle/
+backend/.gradle/
+build/
+backend/build/
+
+# IDE / System configurations
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
