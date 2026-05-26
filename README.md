@@ -5,7 +5,7 @@ ReclaimX is a premium, full-stack digital ecosystem designed to streamline and a
 
 ---
 
-## 🚀 Live Production Links
+## Live Production Links
 
 * **Live Frontend Website (Vercel):** [https://reclaimx-sepia.vercel.app](https://reclaimx-sepia.vercel.app)
 * **Live Backend REST API (Render):** [https://reclaimx-5lxr.onrender.com](https://reclaimx-5lxr.onrender.com)
