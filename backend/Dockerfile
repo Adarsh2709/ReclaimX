@@ -4,11 +4,10 @@ WORKDIR /app
 COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew bootJar -x test --no-daemon
-RUN find . -name "*.jar"
 
 # Run stage
 FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
-COPY --from=build /app/build/libs/app.jar app.jar
+COPY --from=build /app/build/libs/E-Waste-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
