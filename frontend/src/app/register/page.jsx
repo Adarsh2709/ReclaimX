@@ -17,7 +17,7 @@ export default function RegisterPage() {
   const [success, setSuccess] = useState('');
   const [submitting, setSubmitting] = useState(false);
   
-  const { user, register } = useAuth();
+  const { user, register, login } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -38,14 +38,22 @@ export default function RegisterPage() {
     setSubmitting(true);
 
     const result = await register(name, email, password, role);
-    setSubmitting(false);
 
     if (result.success) {
-      setSuccess('Account created successfully! Redirecting to login...');
-      setTimeout(() => {
-        router.push('/login');
-      }, 2000);
+      setSuccess('Account created successfully! Logging you in...');
+      const loginResult = await login(email, password);
+      setSubmitting(false);
+
+      if (loginResult.success) {
+        setSuccess('Logged in successfully! Redirecting to dashboard...');
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 1500);
+      } else {
+        setError('Account created, but auto-login failed. Please try logging in manually.');
+      }
     } else {
+      setSubmitting(false);
       setError(result.message || 'Registration failed. Try a different email.');
     }
   };

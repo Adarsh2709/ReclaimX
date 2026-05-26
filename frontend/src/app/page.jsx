@@ -51,10 +51,10 @@ export default function LandingPage() {
             ) : (
               <>
                 <Link
-                  href="/register"
+                  href="/dashboard"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-8 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-full transition-all duration-200 shadow-lg shadow-primary-500/20"
                 >
-                  Download App
+                  Dashboard
                   <ArrowRight className="h-4.5 w-4.5" />
                 </Link>
                 <Link
