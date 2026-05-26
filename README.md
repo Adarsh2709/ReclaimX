@@ -1,11 +1,11 @@
-# ReclaimX ♻️
+# ReclaimX 
 ### Advanced E-Waste Management & Circular Recycling Network
 
 ReclaimX is a premium, full-stack digital ecosystem designed to streamline and audit electronic waste (e-waste) logistics. It connects households and corporations (**Eco-Citizens**) with certified **Recycling Facilities** under a transparent **Administrative Control Center**, backed by real-time EPA carbon offset calculations and data visualization curves.
 
 ---
 
-## 🏗️ Architecture & Core Workspace
+## Architecture & Core Workspace
 
 The repository is structured as a clean multi-tier workspace separating concern layers:
 
@@ -25,7 +25,7 @@ ReclaimX/
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Backend (REST APIs)
 * **Core Language:** Java 21 (LTS)
@@ -44,7 +44,7 @@ ReclaimX/
 
 ---
 
-## 🌟 Multi-Role Feature Breakdown
+## Multi-Role Feature Breakdown
 
 ReclaimX implements a robust **Role-Based Access Control (RBAC)** architecture that alters dashboard views, menus, and item cards dynamically:
 
@@ -66,14 +66,14 @@ ReclaimX implements a robust **Role-Based Access Control (RBAC)** architecture t
 
 ---
 
-## 📈 Impact & Analytics Dashboard
+## Impact & Analytics Dashboard
 * **Dynamic Parsers:** An advanced text parser in the client decodes raw Spring Boot analytics strings into high-fidelity data arrays.
 * **Material Doughnut Breakdown:** Interactive visualizations illustrating e-waste volume breakdowns (Monitors, Telecom/Laptops, Batteries, Small/Large Home appliances).
 * **timeline Offset Curves:** Renders month-over-month growth of carbon reductions.
 
 ---
 
-## 🚀 Local Deployment Guide
+## Local Deployment Guide
 
 ### Prerequisites
 Make sure you have the following installed on your machine:
@@ -123,12 +123,12 @@ Make sure you have the following installed on your machine:
 
 ---
 
-## 🛡️ Security & Privacy
+## Security & Privacy
 * **CORS Policies:** Global CORS filters configured in [SecurityConfig.java](file:///d:/ReclaimX/backend/src/main/java/org/example/config/SecurityConfig.java) block unauthorized cross-site scripting while allowing preflight operations from `localhost:3000` and `localhost:3001`.
 * **Media Destruction Compliance:** All files on storage media (HDDs, SSDs, cellular cards) are wiped utilizing NIST SP 800-88 guidelines before components separation.
 * **Stateless Sessions:** User login validation is verified via cryptographically signed JWT strings.
 
 ---
 
-## 📝 License
+## License
 ReclaimX is open-source software licensed under the [MIT License](https://opensource.org/licenses/MIT).
