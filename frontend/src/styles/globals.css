@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-outfit: 'Outfit', sans-serif;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-100 antialiased font-sans overflow-x-hidden selection:bg-primary-500 selection:text-dark-950;
+    font-family: var(--font-inter);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.95) 0px, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  @apply bg-dark-900/60 backdrop-blur-lg border border-dark-800/80 shadow-xl shadow-dark-950/20;
+}
+
+.glass-card {
+  @apply bg-dark-900/40 backdrop-blur-md border border-dark-800/50 rounded-2xl shadow-lg;
+}
+
+.glass-input {
+  @apply bg-dark-950/50 border border-dark-800/80 rounded-xl px-4 py-3 text-dark-100 placeholder-dark-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200;
+}
+
+/* Glowing text and objects */
+.glow-primary {
+  box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+}
+
+/* Premium Gradient borders */
+.gradient-border-primary {
+  background: linear-gradient(rgba(15, 23, 42, 1), rgba(15, 23, 42, 1)) padding-box,
+              linear-gradient(135deg, rgba(16, 185, 129, 1), rgba(6, 95, 70, 0.2)) border-box;
+  border: 1px solid transparent;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-800 rounded-full hover:bg-primary-600 transition-colors;
+}
+
+/* Headers and typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit);
+}

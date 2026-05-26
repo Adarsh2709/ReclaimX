@@ -1,36 +1,20 @@
-### IntelliJ IDEA ###
+# Dependency directories
+node_modules/
+frontend/node_modules/
+
+# Next.js build outputs
+.next/
+frontend/.next/
+
+# Java/Gradle build outputs
+.gradle/
+backend/.gradle/
+build/
+backend/build/
+
+# IDE / System configurations
 .idea/
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-.kotlin
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
 .vscode/
-
-### Mac OS ###
+*.iml
 .DS_Store
-# Ignore Gradle project-specific cache directory
-.gradle
-
-# Ignore Gradle build output directory
-build
+Thumbs.db
