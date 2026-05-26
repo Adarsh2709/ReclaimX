@@ -42,35 +42,35 @@ export default function SupportHub() {
   ];
 
   return (
-    <div className="flex-grow bg-dark-950 text-dark-100 font-sans min-h-[calc(100vh-64px)] relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex-grow bg-transparent text-slate-800 font-sans min-h-[calc(100vh-64px)] relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
       {/* Background ambient glow */}
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
 
-      <div className="max-w-6xl mx-auto space-y-12 relative z-10">
+      <div className="max-w-6xl mx-auto space-y-12 relative z-10 animate-fade-in">
         {/* Header */}
-        <div className="text-center space-y-4 border-b border-dark-800 pb-6">
+        <div className="text-center space-y-4 border-b border-green-100 pb-6">
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-500/10 text-primary-500 border border-primary-500/20">
             <HelpCircle className="h-6 w-6 animate-pulse-subtle" />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black font-outfit text-white tracking-tight">Support Hub & Help Center</h1>
-          <p className="text-sm text-dark-400 font-light max-w-lg mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-black font-outfit text-slate-800 tracking-tight">Support Hub & Help Center</h1>
+          <p className="text-sm text-slate-500 font-light max-w-lg mx-auto">
             Need help scheduling a load or have compliance questions? Send us a request or read through our frequent Q&As.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left panel: Contact Form */}
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border-dark-800/80 shadow-2xl space-y-6">
+          <div className="glass-card p-6 sm:p-8 border border-green-100 shadow-2xl space-y-6">
             <div>
-              <h2 className="text-xl font-bold font-outfit text-white tracking-tight flex items-center gap-2">
+              <h2 className="text-xl font-bold font-outfit text-slate-800 tracking-tight flex items-center gap-2">
                 <MessageSquare className="h-5 w-5 text-primary-500" />
                 Submit a Support Ticket
               </h2>
-              <p className="text-xs text-dark-400 font-light mt-1">Our customer experience eco-team will respond within 12 hours.</p>
+              <p className="text-xs text-slate-500 font-light mt-1">Our customer experience eco-team will respond within 12 hours.</p>
             </div>
 
             {success && (
-              <div className="p-4 bg-emerald-500/10 border border-emerald-500/25 rounded-2xl flex items-center gap-3 text-xs text-emerald-400 animate-fade-in">
+              <div className="p-4 bg-emerald-50 border border-emerald-250 rounded-2xl flex items-center gap-3 text-xs text-emerald-700 animate-fade-in">
                 <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
                 <span>Ticket submitted successfully! Check your inbox for confirmation.</span>
               </div>
@@ -79,7 +79,7 @@ export default function SupportHub() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="block text-[9px] font-bold text-dark-400 uppercase tracking-wider pl-1">
+                  <label htmlFor="name" className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider pl-1">
                     Your Name
                   </label>
                   <input
@@ -88,12 +88,12 @@ export default function SupportHub() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Adarsh Jha"
-                    className="w-full px-4 py-2.5 bg-dark-950/50 border border-dark-800/80 rounded-xl text-xs text-dark-100 placeholder-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-850 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-200"
                     required
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="email" className="block text-[9px] font-bold text-dark-400 uppercase tracking-wider pl-1">
+                  <label htmlFor="email" className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider pl-1">
                     Email Address
                   </label>
                   <div className="relative">
@@ -103,16 +103,16 @@ export default function SupportHub() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="w-full pl-10 pr-4 py-2.5 bg-dark-950/50 border border-dark-800/80 rounded-xl text-xs text-dark-100 placeholder-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-850 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-200"
                       required
                     />
-                    <Mail className="absolute left-3.5 top-3 h-4 w-4 text-dark-500" />
+                    <Mail className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
                   </div>
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="msg" className="block text-[9px] font-bold text-dark-400 uppercase tracking-wider pl-1">
+                <label htmlFor="msg" className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider pl-1">
                   Explain your request or issue
                 </label>
                 <textarea
@@ -121,7 +121,7 @@ export default function SupportHub() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="How can we help you clean your space today? Details like address or pickup ID are highly helpful."
-                  className="w-full px-4 py-3 bg-dark-950/50 border border-dark-800/80 rounded-2xl text-xs text-dark-100 placeholder-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-850 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-200"
                   required
                 />
               </div>
@@ -129,10 +129,10 @@ export default function SupportHub() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-primary-500 hover:bg-primary-600 disabled:bg-primary-850 text-dark-950 font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-primary-500/25"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-primary-500 hover:bg-primary-600 disabled:bg-primary-800/80 text-white font-bold rounded-2xl transition-all duration-200 shadow-lg hover:shadow-primary-500/25"
               >
                 {submitting ? (
-                  <div className="h-4 w-4 border-2 border-dark-950 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
                   <>
                     <Send className="h-3.5 w-3.5" />
@@ -146,18 +146,18 @@ export default function SupportHub() {
           {/* Right panel: FAQs */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold font-outfit text-white tracking-tight">Frequently Asked Questions</h2>
-              <p className="text-xs text-dark-400 font-light mt-1">Review standard operational procedures.</p>
+              <h2 className="text-xl font-bold font-outfit text-slate-800 tracking-tight">Frequently Asked Questions</h2>
+              <p className="text-xs text-slate-500 font-light mt-1">Review standard operational procedures.</p>
             </div>
 
             <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className="glass-panel p-5 rounded-2xl border-dark-800/80">
-                  <h4 className="font-bold font-outfit text-white text-sm flex items-center gap-2 mb-2">
-                    <HelpCircle className="h-4.5 w-4.5 text-primary-400 flex-shrink-0" />
+                <div key={i} className="glass-card p-5 border border-green-100 shadow-sm shadow-green-950/2">
+                  <h4 className="font-bold font-outfit text-slate-850 text-sm flex items-center gap-2 mb-2">
+                    <HelpCircle className="h-4.5 w-4.5 text-primary-500 flex-shrink-0" />
                     {faq.q}
                   </h4>
-                  <p className="text-xs text-dark-400 leading-relaxed font-light pl-6">
+                  <p className="text-xs text-slate-500 leading-relaxed font-light pl-6">
                     {faq.a}
                   </p>
                 </div>
@@ -165,13 +165,13 @@ export default function SupportHub() {
             </div>
 
             {/* Quick Contacts */}
-            <div className="bg-dark-900/30 border border-dark-800/60 p-4 rounded-2xl flex flex-col sm:flex-row justify-between gap-4 text-center sm:text-left">
+            <div className="bg-white border border-green-100/60 p-4 rounded-3xl flex flex-col sm:flex-row justify-between gap-4 text-center sm:text-left shadow-sm shadow-green-950/2">
               <div>
-                <h4 className="text-xs font-bold text-white mb-0.5">Urgent Corporate Scheduling</h4>
-                <p className="text-[10px] text-dark-500">For quantities exceeding 500kg</p>
+                <h4 className="text-xs font-bold text-slate-750 mb-0.5">Urgent Corporate Scheduling</h4>
+                <p className="text-[10px] text-slate-400">For quantities exceeding 500kg</p>
               </div>
-              <div className="flex gap-4 justify-center text-xs">
-                <a href="mailto:support@reclaimx.com" className="inline-flex items-center gap-1.5 text-primary-400 hover:text-primary-300 font-bold transition-colors">
+              <div className="flex gap-4 justify-center text-xs items-center">
+                <a href="mailto:support@reclaimx.com" className="inline-flex items-center gap-1.5 text-primary-650 hover:text-primary-850 font-bold transition-colors">
                   <Mail className="h-3.5 w-3.5" />
                   Email Support
                 </a>

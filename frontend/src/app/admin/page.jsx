@@ -86,15 +86,15 @@ export default function AdminDashboard() {
     if (activeTab === 'pending') {
       return (
         <div className="space-y-4">
-          <h2 className="text-xl font-bold font-outfit text-white tracking-tight flex items-center gap-2">
-            <AlertCircle className="h-5 w-5 text-yellow-500" />
+          <h2 className="text-xl font-bold font-outfit text-slate-800 tracking-tight flex items-center gap-2">
+            <AlertCircle className="h-5 w-5 text-amber-500" />
             Pending Recycler Assignments ({pickups.filter(p => p.status.toUpperCase() === 'PENDING').length})
           </h2>
           {pickups.filter(p => p.status.toUpperCase() === 'PENDING').length === 0 ? (
-            <div className="glass-panel p-12 text-center rounded-3xl border-dashed border-dark-800">
+            <div className="glass-card p-12 text-center border-dashed border-2 border-slate-200">
               <CheckCircle className="h-10 w-10 text-primary-500 mx-auto mb-4" />
-              <h3 className="text-base font-bold font-outfit text-dark-200 mb-1">Queue Cleared!</h3>
-              <p className="text-xs text-dark-400">All scheduled e-waste requests have been assigned to certified regional plants.</p>
+              <h3 className="text-base font-bold font-outfit text-slate-700 mb-1">Queue Cleared!</h3>
+              <p className="text-xs text-slate-400">All scheduled e-waste requests have been assigned to certified regional plants.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
@@ -116,15 +116,15 @@ export default function AdminDashboard() {
     if (activeTab === 'all') {
       return (
         <div className="space-y-4">
-          <h2 className="text-xl font-bold font-outfit text-white tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-bold font-outfit text-slate-800 tracking-tight flex items-center gap-2">
             <Layers className="h-5 w-5 text-primary-500" />
             Complete Dispatch History ({pickups.length})
           </h2>
           {pickups.length === 0 ? (
-            <div className="glass-panel p-12 text-center rounded-3xl border-dashed border-dark-800">
-              <ShieldAlert className="h-10 w-10 text-dark-600 mx-auto mb-4" />
-              <h3 className="text-base font-bold font-outfit text-dark-200 mb-1">No dispatches logged</h3>
-              <p className="text-xs text-dark-400">There are currently no transactions inside the ReclaimX system databases.</p>
+            <div className="glass-card p-12 text-center border-dashed border-2 border-slate-200">
+              <ShieldAlert className="h-10 w-10 text-slate-400 mx-auto mb-4" />
+              <h3 className="text-base font-bold font-outfit text-slate-700 mb-1">No dispatches logged</h3>
+              <p className="text-xs text-slate-400">There are currently no transactions inside the ReclaimX system databases.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
@@ -146,15 +146,15 @@ export default function AdminDashboard() {
     if (activeTab === 'facilities') {
       return (
         <div className="space-y-4">
-          <h2 className="text-xl font-bold font-outfit text-white tracking-tight flex items-center gap-2">
-            <Layers className="h-5 w-5 text-teal-400" />
+          <h2 className="text-xl font-bold font-outfit text-slate-800 tracking-tight flex items-center gap-2">
+            <Layers className="h-5 w-5 text-teal-600" />
             Registered Recycling Facilities ({recyclers.length})
           </h2>
           {recyclers.length === 0 ? (
-            <div className="glass-panel p-12 text-center rounded-3xl border-dashed border-dark-800">
-              <Layers className="h-10 w-10 text-dark-600 mx-auto mb-4" />
-              <h3 className="text-base font-bold font-outfit text-dark-200 mb-1">No facilities found</h3>
-              <p className="text-xs text-dark-400">There are no recycling plants registered in ReclaimX. Facility accounts must configure profiles.</p>
+            <div className="glass-card p-12 text-center border-dashed border-2 border-slate-200">
+              <Layers className="h-10 w-10 text-slate-400 mx-auto mb-4" />
+              <h3 className="text-base font-bold font-outfit text-slate-700 mb-1">No facilities found</h3>
+              <p className="text-xs text-slate-400">There are no recycling plants registered in ReclaimX. Facility accounts must configure profiles.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
@@ -170,8 +170,8 @@ export default function AdminDashboard() {
     if (activeTab === 'users') {
       return (
         <div className="space-y-4">
-          <h2 className="text-xl font-bold font-outfit text-white tracking-tight flex items-center gap-2">
-            <Users className="h-5 w-5 text-purple-400" />
+          <h2 className="text-xl font-bold font-outfit text-slate-800 tracking-tight flex items-center gap-2">
+            <Users className="h-5 w-5 text-purple-600" />
             Registered System Users ({mockUsers.length})
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
@@ -186,25 +186,25 @@ export default function AdminDashboard() {
 
   return (
     <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
-      <div className="flex flex-col md:flex-row flex-grow bg-dark-950 font-sans min-h-[calc(100vh-64px)]">
+      <div className="flex flex-col md:flex-row flex-grow bg-transparent font-sans min-h-[calc(100vh-64px)]">
         <Sidebar />
         
         <div className="flex-1 p-6 md:p-8 space-y-8 max-w-7xl mx-auto w-full">
           {/* Header */}
-          <div className="border-b border-dark-800/80 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="border-b border-green-100 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-black font-outfit text-white tracking-tight flex items-center gap-3">
+              <h1 className="text-3xl font-black font-outfit text-slate-800 tracking-tight flex items-center gap-3">
                 <ShieldAlert className="h-7 w-7 text-primary-500" />
                 Admin System Console
               </h1>
-              <p className="text-sm text-dark-400 font-light mt-1">
+              <p className="text-sm text-slate-500 font-light mt-1">
                 Platform control room: review system health metrics, manage users, and assign dispatches to regional plants.
               </p>
             </div>
             
             <button
               onClick={loadData}
-              className="inline-flex items-center gap-2 py-2 px-4 bg-dark-900 hover:bg-dark-850 text-dark-200 border border-dark-800 rounded-xl text-xs font-bold transition-all duration-200"
+              className="inline-flex items-center gap-2 py-2 px-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold shadow-sm shadow-green-950/2 transition-all duration-200"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               Refresh Data
@@ -225,7 +225,7 @@ export default function AdminDashboard() {
               value={stats.unassignedCount}
               icon={AlertCircle}
               description="Awaiting plant coordination"
-              color="red"
+              color="orange"
             />
             <StatsCard
               title="Recycling Facilities"
@@ -245,13 +245,13 @@ export default function AdminDashboard() {
 
           {/* Tabs bar */}
           <div className="space-y-6">
-            <div className="flex gap-4 border-b border-dark-800/80 pb-3">
+            <div className="flex flex-wrap gap-4 md:gap-6 border-b border-green-100 pb-3">
               <button
                 onClick={() => setActiveTab('pending')}
                 className={`text-sm font-bold pb-2 transition-all border-b-2 ${
                   activeTab === 'pending'
-                    ? 'text-primary-400 border-primary-500'
-                    : 'text-dark-400 hover:text-dark-200 border-transparent'
+                    ? 'text-primary-500 border-primary-500'
+                    : 'text-slate-400 hover:text-slate-700 border-transparent'
                 }`}
               >
                 Unassigned Pickups ({pickups.filter(p => p.status.toUpperCase() === 'PENDING').length})
@@ -260,8 +260,8 @@ export default function AdminDashboard() {
                 onClick={() => setActiveTab('all')}
                 className={`text-sm font-bold pb-2 transition-all border-b-2 ${
                   activeTab === 'all'
-                    ? 'text-primary-400 border-primary-500'
-                    : 'text-dark-400 hover:text-dark-200 border-transparent'
+                    ? 'text-primary-500 border-primary-500'
+                    : 'text-slate-400 hover:text-slate-700 border-transparent'
                 }`}
               >
                 All Database Dispatches ({pickups.length})
@@ -270,8 +270,8 @@ export default function AdminDashboard() {
                 onClick={() => setActiveTab('facilities')}
                 className={`text-sm font-bold pb-2 transition-all border-b-2 ${
                   activeTab === 'facilities'
-                    ? 'text-primary-400 border-primary-500'
-                    : 'text-dark-400 hover:text-dark-200 border-transparent'
+                    ? 'text-primary-500 border-primary-500'
+                    : 'text-slate-400 hover:text-slate-700 border-transparent'
                 }`}
               >
                 Registered Plants ({recyclers.length})
@@ -280,8 +280,8 @@ export default function AdminDashboard() {
                 onClick={() => setActiveTab('users')}
                 className={`text-sm font-bold pb-2 transition-all border-b-2 ${
                   activeTab === 'users'
-                    ? 'text-primary-400 border-primary-500'
-                    : 'text-dark-400 hover:text-dark-200 border-transparent'
+                    ? 'text-primary-500 border-primary-500'
+                    : 'text-slate-400 hover:text-slate-700 border-transparent'
                 }`}
               >
                 Account Directory ({mockUsers.length})
@@ -290,7 +290,7 @@ export default function AdminDashboard() {
 
             {/* List */}
             {loading ? (
-              <div className="h-48 border border-dark-850 rounded-2xl flex items-center justify-center text-dark-500 animate-pulse">
+              <div className="h-48 border border-green-100/50 rounded-3xl bg-white/50 flex items-center justify-center text-slate-400 animate-pulse">
                 Syncing system catalogs...
               </div>
             ) : (

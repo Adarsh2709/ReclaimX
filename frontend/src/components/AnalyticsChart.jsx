@@ -31,7 +31,7 @@ ChartJS.register(
 );
 
 export default function AnalyticsChart({ type = 'bar', data, options }) {
-  // Chart theme defaults for premium dark mode
+  // Chart theme defaults for premium bright mode
   const defaultOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -39,7 +39,7 @@ export default function AnalyticsChart({ type = 'bar', data, options }) {
       legend: {
         position: 'bottom',
         labels: {
-          color: '#94a3b8', // text-dark-400
+          color: '#64748b', // text-slate-500
           font: {
             family: 'Inter',
             size: 11,
@@ -49,10 +49,10 @@ export default function AnalyticsChart({ type = 'bar', data, options }) {
         },
       },
       tooltip: {
-        backgroundColor: '#0f172a', // text-dark-900
-        titleColor: '#f8fafc',
-        bodyColor: '#cbd5e1',
-        borderColor: '#334155',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        titleColor: '#0f172a',
+        bodyColor: '#334155',
+        borderColor: '#e2e8f0',
         borderWidth: 1,
         padding: 10,
         boxPadding: 6,
@@ -62,11 +62,11 @@ export default function AnalyticsChart({ type = 'bar', data, options }) {
     scales: type !== 'doughnut' ? {
       x: {
         grid: {
-          color: 'rgba(51, 65, 85, 0.2)', // grid lines color
+          color: 'rgba(226, 232, 240, 0.6)', // light grid lines color
           drawBorder: false,
         },
         ticks: {
-          color: '#94a3b8',
+          color: '#64748b',
           font: {
             family: 'Inter',
             size: 10,
@@ -75,11 +75,11 @@ export default function AnalyticsChart({ type = 'bar', data, options }) {
       },
       y: {
         grid: {
-          color: 'rgba(51, 65, 85, 0.2)',
+          color: 'rgba(226, 232, 240, 0.6)',
           drawBorder: false,
         },
         ticks: {
-          color: '#94a3b8',
+          color: '#64748b',
           font: {
             family: 'Inter',
             size: 10,

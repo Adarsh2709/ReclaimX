@@ -22,9 +22,9 @@ export const MATERIAL_TYPES = [
 ];
 
 export const STATUS_COLORS = {
-  PENDING: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-  ASSIGNED: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  ACCEPTED: 'bg-teal-500/10 text-teal-400 border-teal-500/20',
-  COLLECTED: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-  RECYCLED: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+  PENDING: 'bg-amber-50 text-amber-700 border-amber-200/60',
+  ASSIGNED: 'bg-blue-50 text-blue-700 border-blue-200/60',
+  ACCEPTED: 'bg-teal-50 text-teal-700 border-teal-200/60',
+  COLLECTED: 'bg-orange-50 text-orange-700 border-orange-200/60',
+  RECYCLED: 'bg-emerald-50 text-emerald-700 border-emerald-200/60',
 };

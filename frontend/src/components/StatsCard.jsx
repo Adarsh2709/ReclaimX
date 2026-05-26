@@ -6,34 +6,35 @@ export default function StatsCard({ title, value, icon: Icon, description, trend
   
   const getColorClasses = () => {
     switch (color) {
+      case 'orange':
       case 'yellow':
         return {
-          iconBg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-          glow: 'shadow-yellow-500/5',
-          borderHover: 'hover:border-yellow-500/20'
+          iconBg: 'bg-secondary-50 text-secondary-500 border-secondary-100',
+          glow: 'shadow-secondary-500/5',
+          borderHover: 'hover:border-secondary-500/20'
         };
       case 'blue':
         return {
-          iconBg: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+          iconBg: 'bg-blue-50 text-blue-650 border-blue-100',
           glow: 'shadow-blue-500/5',
           borderHover: 'hover:border-blue-500/20'
         };
       case 'red':
         return {
-          iconBg: 'bg-red-500/10 text-red-400 border-red-500/20',
-          glow: 'shadow-red-500/5',
-          borderHover: 'hover:border-red-500/20'
+          iconBg: 'bg-rose-50 text-rose-600 border-rose-100',
+          glow: 'shadow-rose-500/5',
+          borderHover: 'hover:border-rose-500/20'
         };
       case 'purple':
         return {
-          iconBg: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+          iconBg: 'bg-purple-50 text-purple-650 border-purple-100',
           glow: 'shadow-purple-500/5',
           borderHover: 'hover:border-purple-500/20'
         };
       case 'primary':
       default:
         return {
-          iconBg: 'bg-primary-500/10 text-primary-400 border-primary-500/20',
+          iconBg: 'bg-primary-50 text-primary-600 border-primary-100',
           glow: 'shadow-primary-500/5',
           borderHover: 'hover:border-primary-500/20'
         };
@@ -43,14 +44,14 @@ export default function StatsCard({ title, value, icon: Icon, description, trend
   const classes = getColorClasses();
 
   return (
-    <div className={`glass-card p-6 border-dark-800 transition-all duration-300 font-sans shadow-lg ${classes.glow} ${classes.borderHover} group relative overflow-hidden`}>
+    <div className={`glass-card p-6 border border-green-100 transition-all duration-300 font-sans shadow-lg ${classes.glow} ${classes.borderHover} group relative overflow-hidden`}>
       {/* Decorative radial background glow */}
       <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary-500/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
       
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xs font-bold text-dark-400 uppercase tracking-wider">{title}</p>
-          <h3 className="text-3xl font-black font-outfit text-white mt-1.5 leading-none tracking-tight">
+          <p className="text-xs font-bold text-slate-450 uppercase tracking-wider">{title}</p>
+          <h3 className="text-3xl font-black font-outfit text-slate-800 mt-1.5 leading-none tracking-tight">
             {value}
           </h3>
         </div>
@@ -59,11 +60,11 @@ export default function StatsCard({ title, value, icon: Icon, description, trend
         </div>
       </div>
 
-      <div className="flex items-center justify-between mt-4 pt-3 border-t border-dark-800/40 text-xs">
-        <span className="text-dark-400">{description}</span>
+      <div className="flex items-center justify-between mt-4 pt-3 border-t border-green-100/40 text-xs">
+        <span className="text-slate-500">{description}</span>
         {trend && (
           <span className={`font-semibold ${
-            trend.startsWith('+') ? 'text-primary-400' : 'text-red-400'
+            trend.startsWith('+') ? 'text-primary-600' : 'text-rose-600'
           }`}>
             {trend}
           </span>

@@ -11,7 +11,9 @@ import {
   AlertCircle, 
   Sparkles, 
   Info, 
-  CheckSquare 
+  CheckSquare,
+  Sun,
+  Moon
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -20,6 +22,30 @@ export default function Navbar() {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const dropdownRef = useRef(null);
+  
+  const [theme, setTheme] = useState('light');
+
+  // Load theme preference on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('reclaimx_theme') || 'light';
+    setTheme(savedTheme);
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    localStorage.setItem('reclaimx_theme', nextTheme);
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   // Load custom role-based notifications
   useEffect(() => {
@@ -81,8 +107,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-dark-800/80 bg-dark-950/70 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 w-full px-4 sm:px-6 lg:px-8 py-3 bg-transparent">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 bg-white/90 backdrop-blur-lg rounded-full border border-green-100/40 shadow-xl shadow-green-950/4">
         {/* Brand Logo */}
         <div className="flex items-center select-none">
           <Link href="/" className="flex items-center group">
@@ -90,22 +116,109 @@ export default function Navbar() {
               src="/reclaimX.png" 
               alt="ReclaimX Logo" 
               className="h-11 w-auto object-contain transition-all duration-300 transform group-hover:scale-[1.02]"
+              style={{ filter: 'drop-shadow(1px 1px 0px rgba(30, 41, 59, 0.85)) drop-shadow(-1px 1px 0px rgba(30, 41, 59, 0.85)) drop-shadow(1px -1px 0px rgba(30, 41, 59, 0.85)) drop-shadow(-1px -1px 0px rgba(30, 41, 59, 0.85))' }}
             />
           </Link>
         </div>
 
+        {/* Middle Navigation Links */}
+        <nav className="hidden md:flex items-center gap-1 bg-slate-50/50 border border-slate-100 p-1 rounded-full shadow-inner shadow-slate-200/40">
+          <Link
+            href="/"
+            className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+          >
+            Home
+          </Link>
+          {user ? (
+            <>
+              {user.role === 'USER' && (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    href="/pickup/create"
+                    className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                  >
+                    Request Pickup
+                  </Link>
+                  <Link
+                    href="/pickup"
+                    className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                  >
+                    History
+                  </Link>
+                </>
+              )}
+              {user.role === 'RECYCLER' && (
+                <Link
+                  href="/recycler"
+                  className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                >
+                  Recycler Hub
+                </Link>
+              )}
+              {user.role === 'ADMIN' && (
+                <Link
+                  href="/admin"
+                  className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+                >
+                  Admin Console
+                </Link>
+              )}
+              <Link
+                href="/analytics"
+                className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+              >
+                Eco-Impact
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/analytics"
+                className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+              >
+                Sustainability
+              </Link>
+              <Link
+                href="/support"
+                className="text-xs font-bold px-4 py-2 hover:bg-white hover:shadow-sm text-slate-600 hover:text-primary-650 rounded-full transition-all duration-200"
+              >
+                Support Hub
+              </Link>
+            </>
+          )}
+        </nav>
+
         {/* Action Items */}
         <div className="flex items-center gap-4">
+          {/* Theme Switcher Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-850 transition-all duration-200 shadow-sm"
+            title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+          >
+            {theme === 'light' ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5 text-amber-500" />
+            )}
+          </button>
+
           {user ? (
             <>
               {/* Notification Center */}
               <div className="relative" ref={dropdownRef}>
                 <button 
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className={`relative p-2 rounded-xl transition-all duration-200 border ${
+                  className={`relative p-2 rounded-full transition-all duration-200 border ${
                     showNotifications 
-                      ? 'bg-dark-900 border-dark-700 text-dark-100' 
-                      : 'text-dark-400 hover:text-dark-100 bg-transparent border-transparent hover:bg-dark-900 hover:border-dark-800'
+                      ? 'bg-slate-100 border-slate-200 text-slate-800' 
+                      : 'text-slate-500 hover:text-slate-800 bg-transparent border-transparent hover:bg-slate-100 hover:border-slate-200'
                   }`}
                   title="System Notifications"
                 >
@@ -117,12 +230,12 @@ export default function Navbar() {
 
                 {/* Dropdown Box */}
                 {showNotifications && (
-                  <div className="absolute right-0 mt-3 w-80 sm:w-96 rounded-2xl glass-panel border-dark-800 shadow-2xl p-4 space-y-3 animate-fade-in z-50">
-                    <div className="flex justify-between items-center pb-2.5 border-b border-dark-800/60">
+                  <div className="absolute right-0 mt-3 w-80 sm:w-96 rounded-3xl glass-panel border-green-100/50 shadow-2xl p-4 space-y-3 animate-fade-in z-50">
+                    <div className="flex justify-between items-center pb-2.5 border-b border-slate-100">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold font-outfit text-white">Notifications</span>
+                        <span className="text-sm font-bold font-outfit text-slate-800">Notifications</span>
                         {unreadCount > 0 && (
-                          <span className="px-1.5 py-0.5 text-[10px] font-bold bg-primary-500/10 text-primary-400 rounded-md border border-primary-500/20">
+                          <span className="px-1.5 py-0.5 text-[10px] font-bold bg-primary-500/10 text-primary-600 rounded-md border border-primary-500/20">
                             {unreadCount} new
                           </span>
                         )}
@@ -131,7 +244,7 @@ export default function Navbar() {
                       {unreadCount > 0 && (
                         <button 
                           onClick={markAllRead}
-                          className="text-[10px] font-bold text-primary-400 hover:text-primary-350 transition-colors inline-flex items-center gap-1"
+                          className="text-[10px] font-bold text-primary-600 hover:text-primary-750 transition-colors inline-flex items-center gap-1"
                         >
                           <Check className="h-3 w-3" />
                           Mark all read
@@ -141,7 +254,7 @@ export default function Navbar() {
 
                     <div className="max-h-64 overflow-y-auto space-y-2.5 pr-1 select-none">
                       {notifications.length === 0 ? (
-                        <div className="py-8 text-center text-xs text-dark-500">
+                        <div className="py-8 text-center text-xs text-slate-400">
                           No notifications logged.
                         </div>
                       ) : (
@@ -149,10 +262,10 @@ export default function Navbar() {
                           <div 
                             key={notif.id}
                             onClick={() => toggleRead(notif.id)}
-                            className={`flex gap-3 p-3 rounded-xl border transition-all cursor-pointer ${
+                            className={`flex gap-3 p-3 rounded-2xl border transition-all cursor-pointer ${
                               notif.read 
-                                ? 'bg-dark-900/20 border-dark-850 hover:bg-dark-900/40 text-dark-400' 
-                                : 'bg-primary-500/5 border-primary-500/10 hover:bg-primary-500/10 text-dark-200'
+                                ? 'bg-slate-50/50 border-slate-100 hover:bg-slate-50 text-slate-500' 
+                                : 'bg-primary-500/5 border-primary-500/10 hover:bg-primary-500/10 text-slate-700'
                             }`}
                           >
                             <span className="flex-shrink-0 mt-0.5">
@@ -160,10 +273,10 @@ export default function Navbar() {
                             </span>
                             <div className="space-y-1 flex-1">
                               <p className="text-xs leading-relaxed font-light">{notif.text}</p>
-                              <span className="text-[9px] text-dark-500 font-bold tracking-wide uppercase block">{notif.time}</span>
+                              <span className="text-[9px] text-slate-400 font-bold tracking-wide uppercase block">{notif.time}</span>
                             </div>
                             {!notif.read && (
-                              <span className="h-1.5 w-1.5 rounded-full bg-primary-400 flex-shrink-0 mt-2 self-start animate-pulse"></span>
+                              <span className="h-1.5 w-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-2 self-start animate-pulse"></span>
                             )}
                           </div>
                         ))
@@ -174,19 +287,19 @@ export default function Navbar() {
               </div>
 
               {/* User Account Info */}
-              <div className="flex items-center gap-3 pl-2 border-l border-dark-800">
+              <div className="flex items-center gap-3 pl-2 border-l border-slate-200">
                 <div className="hidden md:flex flex-col text-right">
-                  <span className="text-sm font-medium text-dark-100 font-sans">{user.name}</span>
-                  <span className="text-[10px] font-semibold tracking-wider text-primary-500 uppercase">{user.role}</span>
+                  <span className="text-sm font-semibold text-slate-700 font-sans">{user.name}</span>
+                  <span className="text-[10px] font-bold tracking-wider text-primary-500 uppercase">{user.role}</span>
                 </div>
                 
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-dark-900 border border-dark-800 text-primary-500">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 text-primary-500">
                   <User className="h-4.5 w-4.5" />
                 </div>
 
                 <button
                   onClick={logout}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl bg-dark-900 hover:bg-red-500/10 border border-dark-800 hover:border-red-500/30 text-dark-400 hover:text-red-400 transition-all duration-200"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 hover:bg-red-500/10 border border-slate-200 hover:border-red-500/30 text-slate-500 hover:text-red-500 transition-all duration-200"
                   title="Logout"
                 >
                   <LogOut className="h-4.5 w-4.5" />
@@ -197,13 +310,13 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/login"
-                className="text-sm font-medium text-dark-300 hover:text-dark-100 px-4 py-2 hover:bg-dark-900 rounded-xl transition-all duration-200"
+                className="text-sm font-semibold text-slate-600 hover:text-slate-800 px-4 py-2 hover:bg-slate-100 rounded-full transition-all duration-200"
               >
                 Log In
               </Link>
               <Link
                 href="/register"
-                className="text-sm font-bold bg-primary-500 hover:bg-primary-600 text-dark-950 px-4 py-2 rounded-xl transition-all duration-200 shadow-md hover:shadow-primary-500/10"
+                className="text-sm font-bold bg-secondary-500 hover:bg-secondary-600 text-white px-5 py-2.5 rounded-full transition-all duration-200 shadow-md shadow-secondary-500/20"
               >
                 Register
               </Link>

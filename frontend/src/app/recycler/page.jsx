@@ -172,30 +172,30 @@ export default function RecyclerDashboard() {
 
   return (
     <ProtectedRoute allowedRoles={[ROLES.RECYCLER]}>
-      <div className="flex flex-col md:flex-row flex-grow bg-dark-950 font-sans min-h-[calc(100vh-64px)]">
+      <div className="flex flex-col md:flex-row flex-grow bg-transparent font-sans min-h-[calc(100vh-64px)]">
         <Sidebar />
         
         <div className="flex-1 p-6 md:p-8 space-y-8 max-w-7xl mx-auto w-full">
           {/* Header */}
-          <div className="border-b border-dark-800/80 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="border-b border-green-100 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-black font-outfit text-white tracking-tight flex items-center gap-3">
+              <h1 className="text-3xl font-black font-outfit text-slate-800 tracking-tight flex items-center gap-3">
                 <Layers className="h-7 w-7 text-primary-500" />
                 Recycling Facility Center
               </h1>
-              <p className="text-sm text-dark-400 font-light mt-1">
+              <p className="text-sm text-slate-500 font-light mt-1">
                 Manage assigned dispatches, update item collection states, and verify carbon point completions.
               </p>
             </div>
 
             {profile && (
-              <div className="flex items-center gap-3 bg-dark-900/60 border border-dark-800 p-3 rounded-2xl">
+              <div className="flex items-center gap-3 bg-white border border-green-100/60 p-3 rounded-2xl shadow-sm shadow-green-950/2">
                 <div className="h-9 w-9 bg-primary-500/10 text-primary-500 rounded-xl flex items-center justify-center border border-primary-500/20">
                   <Award className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white leading-tight">{profile.companyName}</h4>
-                  <span className="text-[9px] text-dark-400">Area: {profile.serviceArea}</span>
+                  <h4 className="text-xs font-bold text-slate-700 leading-tight">{profile.companyName}</h4>
+                  <span className="text-[9px] text-slate-400">Area: {profile.serviceArea}</span>
                 </div>
               </div>
             )}
@@ -203,20 +203,20 @@ export default function RecyclerDashboard() {
 
           {/* Profile Setup Screen */}
           {!profile && !loading ? (
-            <div className="glass-panel p-8 sm:p-12 rounded-3xl max-w-xl mx-auto border-primary-500/10 shadow-2xl space-y-6">
+            <div className="glass-card p-8 sm:p-12 rounded-3xl max-w-xl mx-auto border-green-100/60 shadow-2xl space-y-6 animate-slide-up">
               <div className="text-center space-y-2">
                 <div className="h-12 w-12 bg-primary-500/10 text-primary-500 rounded-2xl flex items-center justify-center mx-auto border border-primary-500/20">
                   <Recycle className="h-6 w-6 animate-pulse-subtle" />
                 </div>
-                <h2 className="text-2xl font-black font-outfit text-white">Facility Registration</h2>
-                <p className="text-xs text-dark-400 font-light max-w-xs mx-auto">
+                <h2 className="text-2xl font-black font-outfit text-slate-800">Facility Registration</h2>
+                <p className="text-xs text-slate-500 font-light max-w-xs mx-auto">
                   Provide your organization details to accept dispatches and report certified carbon weights.
                 </p>
               </div>
 
               <form onSubmit={handleCreateProfile} className="space-y-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="company" className="block text-[9px] font-bold text-dark-400 uppercase tracking-wider pl-1">
+                  <label htmlFor="company" className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider pl-1">
                     Certified Company Name
                   </label>
                   <input
@@ -225,14 +225,14 @@ export default function RecyclerDashboard() {
                     placeholder="EcoRecycle Plant Ltd."
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="w-full px-4 py-3 bg-dark-950/50 border border-dark-800/80 rounded-xl text-xs text-dark-100 placeholder-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-200"
                     required
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label htmlFor="contact" className="block text-[9px] font-bold text-dark-400 uppercase tracking-wider pl-1">
+                    <label htmlFor="contact" className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider pl-1">
                       Phone Contact
                     </label>
                     <div className="relative">
@@ -242,15 +242,15 @@ export default function RecyclerDashboard() {
                         placeholder="+1-555-0199"
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-dark-950/50 border border-dark-800/80 rounded-xl text-xs text-dark-100 placeholder-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-200"
                         required
                       />
-                      <Phone className="absolute left-3.5 top-3 h-4 w-4 text-dark-500" />
+                      <Phone className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label htmlFor="area" className="block text-[9px] font-bold text-dark-400 uppercase tracking-wider pl-1">
+                    <label htmlFor="area" className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider pl-1">
                       Service Area Region
                     </label>
                     <div className="relative">
@@ -260,10 +260,10 @@ export default function RecyclerDashboard() {
                         placeholder="Northeast sector, NY"
                         value={serviceArea}
                         onChange={(e) => setServiceArea(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-dark-950/50 border border-dark-800/80 rounded-xl text-xs text-dark-100 placeholder-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-200"
                         required
                       />
-                      <Map className="absolute left-3.5 top-3 h-4 w-4 text-dark-500" />
+                      <Map className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
                     </div>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ export default function RecyclerDashboard() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3 px-4 bg-primary-500 hover:bg-primary-600 text-dark-950 font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-primary-500/25"
+                  className="w-full py-3 px-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl transition-all duration-200 shadow-lg hover:shadow-primary-500/25"
                 >
                   {submitting ? 'Registering Facility...' : 'Complete Registration Setup'}
                 </button>
@@ -293,7 +293,7 @@ export default function RecyclerDashboard() {
                   value={stats.collectedJobs}
                   icon={Truck}
                   description="Loaded in logistics transport"
-                  color="yellow"
+                  color="orange"
                 />
                 <StatsCard
                   title="Total Weight Extracted"
@@ -314,13 +314,13 @@ export default function RecyclerDashboard() {
               {/* Jobs section */}
               <div className="space-y-4">
                 {/* Tabs */}
-                <div className="flex gap-4 border-b border-dark-800/80 pb-3">
+                <div className="flex gap-4 border-b border-green-100 pb-3">
                   <button
                     onClick={() => setActiveTab('assigned')}
                     className={`text-sm font-bold pb-2 transition-all border-b-2 ${
                       activeTab === 'assigned'
-                        ? 'text-primary-400 border-primary-500'
-                        : 'text-dark-400 hover:text-dark-200 border-transparent'
+                        ? 'text-primary-500 border-primary-500'
+                        : 'text-slate-400 hover:text-slate-700 border-transparent'
                     }`}
                   >
                     My Assigned Dispatches ({listToRender.length})
@@ -329,8 +329,8 @@ export default function RecyclerDashboard() {
                     onClick={() => setActiveTab('all')}
                     className={`text-sm font-bold pb-2 transition-all border-b-2 ${
                       activeTab === 'all'
-                        ? 'text-primary-400 border-primary-500'
-                        : 'text-dark-400 hover:text-dark-200 border-transparent'
+                        ? 'text-primary-500 border-primary-500'
+                        : 'text-slate-400 hover:text-slate-700 border-transparent'
                     }`}
                   >
                     Pending System Requests ({pickups.filter(p => !p.recycler && p.status.toUpperCase() === 'PENDING').length})
@@ -339,14 +339,14 @@ export default function RecyclerDashboard() {
 
                 {/* Grid */}
                 {loading ? (
-                  <div className="h-48 border border-dark-850 rounded-2xl flex items-center justify-center text-dark-500 animate-pulse">
+                  <div className="h-48 border border-green-100/50 rounded-3xl bg-white/50 flex items-center justify-center text-slate-400 animate-pulse">
                     Refreshing active recycler queue...
                   </div>
                 ) : listToRender.length === 0 ? (
-                  <div className="glass-panel p-12 text-center rounded-3xl border-dashed border-dark-800">
-                    <Recycle className="h-10 w-10 text-dark-600 mx-auto mb-4" />
-                    <h3 className="text-base font-bold font-outfit text-dark-200 mb-1">No tasks in queue</h3>
-                    <p className="text-xs text-dark-400 max-w-xs mx-auto">
+                  <div className="glass-card p-12 text-center border-dashed border-2 border-slate-200 shadow-sm shadow-green-950/2">
+                    <Recycle className="h-10 w-10 text-slate-300 mx-auto mb-4" />
+                    <h3 className="text-base font-bold font-outfit text-slate-700 mb-1">No tasks in queue</h3>
+                    <p className="text-xs text-slate-400 max-w-xs mx-auto">
                       {activeTab === 'assigned'
                         ? "You do not have any active pickups assigned. Contact system admin to assign pending items."
                         : "There are no pending unassigned requests in ReclaimX at this moment."}

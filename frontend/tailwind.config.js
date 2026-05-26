@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,17 +10,30 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#10b981', // emerald
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22',
+          50: '#f4faf6',
+          100: '#e8f5ec',
+          200: '#cbebd5',
+          300: '#98d5ab',
+          400: '#5fbd7e',
+          500: '#3da857', // Forest/Leafy Green
+          600: '#2d8b44',
+          700: '#226b34',
+          800: '#1a5228',
+          900: '#133d1e',
+          950: '#0a2010',
+        },
+        secondary: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#f97316',
+          500: '#ff7d29', // Warm Organic Orange
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
+          950: '#431407',
         },
         dark: {
           50: '#f8fafc',
