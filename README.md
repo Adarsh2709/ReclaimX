@@ -5,17 +5,26 @@ ReclaimX is a premium, full-stack digital ecosystem designed to streamline and a
 
 ---
 
+## 🚀 Live Production Links
+
+* **Live Frontend Website (Vercel):** [https://reclaimx-sepia.vercel.app](https://reclaimx-sepia.vercel.app)
+* **Live Backend REST API (Render):** [https://reclaimx-5lxr.onrender.com](https://reclaimx-5lxr.onrender.com)
+* **Live Cloud Database (Clever Cloud):** Managed MySQL Instance
+
+---
+
 ## Architecture & Core Workspace
 
 The repository is structured as a clean multi-tier workspace separating concern layers:
 
 ```
 ReclaimX/
-├── backend/          # Spring Boot REST API Service
+├── backend/          # Spring Boot REST API Service (Dockerized)
 │   ├── src/          # Java controller, service, JPA repositories, entities
+│   ├── Dockerfile    # Optimized Java 21 production Dockerfile
 │   └── build.gradle  # Gradle project specifications (Java 21, boot 3.5.3)
 │
-├── frontend/         # Next.js App Router Client Application
+├── frontend/         # Next.js App Router Client Application (Vercel Optimized)
 │   ├── src/          # React context, hooks, Axios layers, components, pages
 │   ├── public/       # Static assets (transparent brand ReclaimX logo)
 │   └── package.json  # NPM scripts and external dependencies
@@ -31,7 +40,8 @@ ReclaimX/
 * **Core Language:** Java 21 (LTS)
 * **Framework:** Spring Boot 3.5.3 (Web, Security, Data-JPA, Validation)
 * **Authentication:** Stateless JWT Token Issuance & Verification
-* **Database:** MySQL Database Engine
+* **Database:** MySQL Database Engine (Clever Cloud hosted in prod)
+* **Deployment Runtime:** Docker (with Serial Garbage Collector and JVM memory tuning)
 * **Build Automation:** Gradle Wrapper
 
 ### Frontend (User Interface)
@@ -41,6 +51,7 @@ ReclaimX/
 * **Icon Set:** Lucide React icons
 * **Data Visualization:** Chart.js & React-Chartjs-2 (Doughnut category spreads & linear timelines)
 * **Security:** Context-driven Protected Route role authorization guards
+* **Hosting Platform:** Vercel
 
 ---
 
@@ -69,7 +80,24 @@ ReclaimX implements a robust **Role-Based Access Control (RBAC)** architecture t
 ## Impact & Analytics Dashboard
 * **Dynamic Parsers:** An advanced text parser in the client decodes raw Spring Boot analytics strings into high-fidelity data arrays.
 * **Material Doughnut Breakdown:** Interactive visualizations illustrating e-waste volume breakdowns (Monitors, Telecom/Laptops, Batteries, Small/Large Home appliances).
-* **timeline Offset Curves:** Renders month-over-month growth of carbon reductions.
+* **Timeline Offset Curves:** Renders month-over-month growth of carbon reductions.
+
+---
+
+## Production Deployment & Configuration
+
+Both tiers read dynamic configurations via environment variables, allowing seamless transition between local and cloud environments:
+
+### Backend Environment Variables (Render)
+* **`SPRING_DATASOURCE_URL`** ➡️ `jdbc:mysql://[CLEVER_CLOUD_HOST]:3306/[CLEVER_CLOUD_DB_NAME]`
+* **`SPRING_DATASOURCE_USERNAME`** ➡️ `[CLEVER_CLOUD_USER]`
+* **`SPRING_DATASOURCE_PASSWORD`** ➡️ `[CLEVER_CLOUD_PASSWORD]`
+* **`PORT`** ➡️ Render default binding port (10000)
+
+*The backend Dockerfile uses optimized parameters `-XX:+UseSerialGC -XX:TieredStopAtLevel=1 -Xmx192m -Xms192m` to run comfortably inside low-memory containers (under 250MB footprint).*
+
+### Frontend Environment Variables (Vercel)
+* **`NEXT_PUBLIC_API_URL`** ➡️ `https://reclaimx-5lxr.onrender.com`
 
 ---
 
@@ -89,11 +117,11 @@ Make sure you have the following installed on your machine:
    ```sql
    CREATE DATABASE ewaste_db;
    ```
-2. Navigate to [application.properties](file:///d:/ReclaimX/backend/src/main/resources/application.properties) and update your database credentials:
+2. Navigate to [application.properties](file:///d:/ReclaimX/backend/src/main/resources/application.properties) (which is configured to dynamically fallback to local credentials):
    ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/ewaste_db
-   spring.datasource.username=YOUR_MYSQL_USERNAME
-   spring.datasource.password=YOUR_MYSQL_PASSWORD
+   spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/ewaste_db}
+   spring.datasource.username=${SPRING_DATASOURCE_USERNAME:root}
+   spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:YOUR_LOCAL_PASSWORD}
    ```
 3. Open a terminal in the `backend/` directory, compile the resources, and boot the server:
    * **Linux/macOS:**
@@ -111,7 +139,7 @@ Make sure you have the following installed on your machine:
 ### Step 2: Frontend Setup (Next.js)
 
 1. Open a new terminal in the `frontend/` directory.
-2. Install the clean, lightweight NPM dependencies:
+2. Install dependencies:
    ```bash
    npm install
    ```
@@ -124,7 +152,7 @@ Make sure you have the following installed on your machine:
 ---
 
 ## Security & Privacy
-* **CORS Policies:** Global CORS filters configured in [SecurityConfig.java](file:///d:/ReclaimX/backend/src/main/java/org/example/config/SecurityConfig.java) block unauthorized cross-site scripting while allowing preflight operations from `localhost:3000` and `localhost:3001`.
+* **CORS Policies:** Global CORS filters configured in [SecurityConfig.java](file:///d:/ReclaimX/backend/src/main/java/org/example/config/SecurityConfig.java) support localhost as well as secure wildcard Vercel matching (`https://*.vercel.app`) to block cross-site request forgery while allowing seamless API communications.
 * **Media Destruction Compliance:** All files on storage media (HDDs, SSDs, cellular cards) are wiped utilizing NIST SP 800-88 guidelines before components separation.
 * **Stateless Sessions:** User login validation is verified via cryptographically signed JWT strings.
 
