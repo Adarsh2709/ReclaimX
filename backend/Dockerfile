@@ -4,6 +4,7 @@ WORKDIR /app
 COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew bootJar -x test --no-daemon
+RUN find . -name "*.jar"
 
 # Run stage
 FROM eclipse-temurin:21-jre-jammy
